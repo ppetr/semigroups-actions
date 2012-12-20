@@ -6,6 +6,10 @@ See Wikipedia articles on
 [semigroup action](http://en.wikipedia.org/wiki/Semigroup_action) and
 [group action](http://en.wikipedia.org/wiki/Group_action).
 
+This package complements and depends on [semigroups](http://hackage.haskell.org/package/semigroups).
+
+It requires `MultiParamTypeClasses` extension.
+
 ## Examples
 
 Similarly to semigroups, semigroup (or monoid) actions arise almost everywhere (if you look for them).
