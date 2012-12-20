@@ -14,28 +14,36 @@ Similarly to semigroups, semigroup (or monoid) actions arise almost everywhere (
 
 The multiplication monoid of natural numbers acts on any other monoid:
 
-    n `act` x = x <> ... <> x -- x appears n-times
+```haskell
+n `act` x = x <> ... <> x -- x appears n-times
+```
 
-So `0 \`act\` x == mempty`, `3 \`act\` x == x <> x <> x` etc. TODO efficiency
+So ``0 `act` x == mempty``, ``3 `act` x == x <> x <> x`` etc. TODO efficiency
 
 This is expressed by `newtype Repeat` and instance
 
-    instance (Monoid w, Whole n) => SemigroupAct (Product n) (Repeat w) where
+```haskell
+instance (Monoid w, Whole n) => SemigroupAct (Product n) (Repeat w) where
+```
 
 Many different concepts can be expressed using such an action, including
 
 - repeating a list `n`-times (`replicate`),
 - compose a function `f` `n`-times, commonly denoted as _fⁿ_ in mathematics:
 
-      (Repeat (Endo fⁿ)) = (Product n) `act` (Repeat (Endo f))
+    ```haskell
+    (Repeat (Endo fⁿ)) = (Product n) `act` (Repeat (Endo f))
+    ```
 
 ## Self-application
 
 Any semigroup (or monoid) can be viewed as acting on itself. In this case, `act` simply becomes `<>`. This is expressed by the `SelfAct` type:
 
-    newtype SelfAct a = SelfAct a
-    instance Semigroup g => Semigroup (SelfAct g) where
-        (SelfAct x) <> (SelfAct y) = SelfAct $ x <> y
+```haskell
+newtype SelfAct a = SelfAct a
+instance Semigroup g => Semigroup (SelfAct g) where
+    (SelfAct x) <> (SelfAct y) = SelfAct $ x <> y
+```
 
 ## Matrices acting on vectors
 
