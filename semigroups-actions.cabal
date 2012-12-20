@@ -44,3 +44,4 @@ library
 
   exposed-modules:
     Data.Semigroup.Act
+    Data.Semigroup.Act.Enum
