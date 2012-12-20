@@ -22,7 +22,10 @@ The multiplication monoid of natural numbers acts on any other monoid:
 n `act` x = x <> ... <> x -- x appears n-times
 ```
 
-So ``0 `act` x == mempty``, ``3 `act` x == x <> x <> x`` etc. TODO efficiency
+So ``0 `act` x == mempty``, ``3 `act` x == x <> x <> x`` etc.
+Because `<>` is associative, such an action can be computed very efficiently
+with only _O(log n)_ operations using
+[binary multiplication](https://en.wikipedia.org/wiki/Peasant_multiplication).
 
 This is expressed by `newtype Repeat` and instance
 
